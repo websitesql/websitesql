@@ -1,8 +1,8 @@
 <?php declare(strict_types=1);
 
-namespace WebsiteSQL\Providers;
+namespace WebsiteSQL\WebsiteSQL\Providers;
 
-use WebsiteSQL\App;
+use WebsiteSQL\WebsiteSQL\App;
 
 class LoggingProvider
 {

@@ -1,19 +1,19 @@
 <?php declare(strict_types=1);
 
-namespace WebsiteSQL\Controllers\Auth;
+namespace WebsiteSQL\WebsiteSQL\Controllers\Auth;
 
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Laminas\Diactoros\Response\HtmlResponse;
-use WebsiteSQL\Exceptions\InvalidTokenException;
-use WebsiteSQL\Exceptions\MissingRequiredFieldsException;
-use WebsiteSQL\Exceptions\UserNotFoundException;
-use WebsiteSQL\Exceptions\IncorrectPasswordException;
-use WebsiteSQL\Exceptions\EmailNotVerifiedException;
-use WebsiteSQL\Exceptions\UserNotApprovedException;
-use WebsiteSQL\Exceptions\UserLockedOutException;
-use WebsiteSQL\App;
+use WebsiteSQL\WebsiteSQL\Exceptions\InvalidTokenException;
+use WebsiteSQL\WebsiteSQL\Exceptions\MissingRequiredFieldsException;
+use WebsiteSQL\WebsiteSQL\Exceptions\UserNotFoundException;
+use WebsiteSQL\WebsiteSQL\Exceptions\IncorrectPasswordException;
+use WebsiteSQL\WebsiteSQL\Exceptions\EmailNotVerifiedException;
+use WebsiteSQL\WebsiteSQL\Exceptions\UserNotApprovedException;
+use WebsiteSQL\WebsiteSQL\Exceptions\UserLockedOutException;
+use WebsiteSQL\WebsiteSQL\App;
 use Exception;
 use Laminas\Diactoros\Response\RedirectResponse;
 

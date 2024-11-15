@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace WebsiteSQL\Providers;
+namespace WebsiteSQL\WebsiteSQL\Providers;
 
 use League\Route\Router;
 use League\Route\RouteGroup;
@@ -15,10 +15,10 @@ use Laminas\Diactoros\Response\RedirectResponse;
 use Laminas\Diactoros\Response\EmptyResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
-use WebsiteSQL\App;
-use WebsiteSQL\Middleware\AuthMiddleware;
-use WebsiteSQL\Middleware\GuestMiddleware;
-use WebsiteSQL\Middleware\AccessMiddleware;
+use WebsiteSQL\WebsiteSQL\App;
+use WebsiteSQL\WebsiteSQL\Middleware\AuthMiddleware;
+use WebsiteSQL\WebsiteSQL\Middleware\GuestMiddleware;
+use WebsiteSQL\WebsiteSQL\Middleware\AccessMiddleware;
 use Exception;
 
 class RoutingProvider

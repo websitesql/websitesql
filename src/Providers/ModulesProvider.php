@@ -1,11 +1,11 @@
 <?php declare(strict_types=1);
 
-namespace WebsiteSQL\Providers;
+namespace WebsiteSQL\WebsiteSQL\Providers;
 
-use WebsiteSQL\App;
-use WebsiteSQL\Exceptions\ModuleNotFoundException;
-use WebsiteSQL\Exceptions\CustomPageNotFoundException;
-use WebsiteSQL\Modules\Environment;
+use WebsiteSQL\WebsiteSQL\App;
+use WebsiteSQL\WebsiteSQL\Exceptions\ModuleNotFoundException;
+use WebsiteSQL\WebsiteSQL\Exceptions\CustomPageNotFoundException;
+use WebsiteSQL\WebsiteSQL\Modules\Environment;
 
 class ModulesProvider
 {
@@ -92,7 +92,7 @@ class ModulesProvider
     public function detectModules(): void
     {
         // Trace Log: Detecting modules
-        $this->app->log('admin', '[WebsiteSQL\Providers\ModulesProvider][detectModules] Function called');
+        $this->app->log('admin', '[WebsiteSQL\WebsiteSQL\Providers\ModulesProvider][detectModules] Function called');
 
         // Get all modules from the database
         $modules = $this->app->getDatabase()->select($this->app->getStrings()->getTableModules(), '*');
@@ -145,7 +145,7 @@ class ModulesProvider
     private function initModules(): void
     {
         // Trace Log: Detecting modules
-        $this->app->log('admin', '[WebsiteSQL\Providers\ModulesProvider][initModules] Function called');
+        $this->app->log('admin', '[WebsiteSQL\WebsiteSQL\Providers\ModulesProvider][initModules] Function called');
         
         // Get all modules from the database
         $modules = $this->app->getDatabase()->select($this->app->getStrings()->getTableModules(), '*');

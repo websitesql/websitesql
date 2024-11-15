@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace WebsiteSQL;
+namespace WebsiteSQL\WebsiteSQL;
 
-use WebsiteSQL\Providers\StringsProvider;
-use WebsiteSQL\Providers\RenderingProvider;
-use WebsiteSQL\Providers\RoutingProvider;
-use WebsiteSQL\Providers\ModulesProvider;
-use WebsiteSQL\Providers\AuthenticationProvider;
-use WebsiteSQL\Providers\UserProvider;
-use WebsiteSQL\Providers\UtilitiesProvider;
-use WebsiteSQL\Controllers\AdminController;
-use WebsiteSQL\Controllers\SetupController;
+use WebsiteSQL\WebsiteSQL\Providers\StringsProvider;
+use WebsiteSQL\WebsiteSQL\Providers\RenderingProvider;
+use WebsiteSQL\WebsiteSQL\Providers\RoutingProvider;
+use WebsiteSQL\WebsiteSQL\Providers\ModulesProvider;
+use WebsiteSQL\WebsiteSQL\Providers\AuthenticationProvider;
+use WebsiteSQL\WebsiteSQL\Providers\UserProvider;
+use WebsiteSQL\WebsiteSQL\Providers\UtilitiesProvider;
+use WebsiteSQL\WebsiteSQL\Controllers\AdminController;
+use WebsiteSQL\WebsiteSQL\Controllers\SetupController;
 use Dotenv\Dotenv;
 use Medoo\Medoo;
 use Exception;
@@ -106,7 +106,7 @@ class App
     public function init(): void
     {
         // Trace Log: init
-        $this->log('admin', '[WebsiteSQL\App] [init] Function called');
+        $this->log('admin', '[WebsiteSQL\WebsiteSQL\App] [init] Function called');
 
         // Load environment variables
         $this->initEnv();
@@ -147,7 +147,7 @@ class App
     private function initEnv(): void
     {
         // Trace Log: initEnv
-        $this->log('admin', '[WebsiteSQL\App] [initEnv] Function called');
+        $this->log('admin', '[WebsiteSQL\WebsiteSQL\App] [initEnv] Function called');
 
         // Check if the environment variables file exists
         if (!file_exists($this->basePath . '/.env')) {
@@ -175,7 +175,7 @@ class App
     private function initDatabase(): void
     {
         // Trace Log: initDatabase
-        $this->log('admin', '[WebsiteSQL\App] [initDatabase] Function called');
+        $this->log('admin', '[WebsiteSQL\WebsiteSQL\App] [initDatabase] Function called');
 
         // Skip database connection if in setup mode
         if ($this->setupMode) {
@@ -217,7 +217,7 @@ class App
     private function initSession(): void
     {
         // Trace Log: initSession
-        $this->log('admin', '[WebsiteSQL\App] [initSession] Function called');
+        $this->log('admin', '[WebsiteSQL\WebsiteSQL\App] [initSession] Function called');
 
         // Check a session is started
         if (session_status() == PHP_SESSION_NONE) {
@@ -233,7 +233,7 @@ class App
     private function initSecurity(): void
     {
         // Trace Log: initSecurity
-        $this->log('admin', '[WebsiteSQL\App] [initSecurity] Function called');
+        $this->log('admin', '[WebsiteSQL\WebsiteSQL\App] [initSecurity] Function called');
 
         // Check a session is started
         if (session_status() == PHP_SESSION_NONE) {
@@ -257,7 +257,7 @@ class App
     private function initSettings(): void
     {
         // Trace Log: initSettings
-        $this->log('admin', '[WebsiteSQL\App] [initSettings] Function called');
+        $this->log('admin', '[WebsiteSQL\WebsiteSQL\App] [initSettings] Function called');
 
         // Skip settings if in setup mode
         if ($this->setupMode) {
@@ -284,7 +284,7 @@ class App
     private function initRouter(): void
     {
         // Trace Log: initRouter
-        $this->log('admin', '[WebsiteSQL\App] [initRouter] Function called');
+        $this->log('admin', '[WebsiteSQL\WebsiteSQL\App] [initRouter] Function called');
 
         // Check if router is set
         if ($this->routing) {
@@ -306,7 +306,7 @@ class App
     private function initRenderer(): void
     {
         // Trace Log: initRenderer
-        $this->log('admin', '[WebsiteSQL\App] [initRenderer] Function called');
+        $this->log('admin', '[WebsiteSQL\WebsiteSQL\App] [initRenderer] Function called');
 
         // Check if renderer is set
         if ($this->rendering) {
@@ -328,7 +328,7 @@ class App
     private function initModules(): void
     {
         // Trace Log: initModules
-        $this->log('admin', '[WebsiteSQL\App] [initModules] Function called');
+        $this->log('admin', '[WebsiteSQL\WebsiteSQL\App] [initModules] Function called');
 
         // Skip modules if in setup mode
         if ($this->setupMode) {
@@ -355,7 +355,7 @@ class App
     private function initTimezone(): void
     {
         // Trace Log: initTimezone
-        $this->log('admin', '[WebsiteSQL\App] [initTimezone] Function called');
+        $this->log('admin', '[WebsiteSQL\WebsiteSQL\App] [initTimezone] Function called');
 
         // Skip timezone if in setup mode
         if ($this->setupMode) {
@@ -379,7 +379,7 @@ class App
     private function initControllers(): void
     {
         // Trace Log: initAdmin
-        $this->log('admin', '[WebsiteSQL\App] [initControllers] Function called');
+        $this->log('admin', '[WebsiteSQL\WebsiteSQL\App] [initControllers] Function called');
 
         // Check if controllers are set
         if ($this->controllerStatus) {
@@ -413,7 +413,7 @@ class App
     public function serve(): void
     {
         // Trace Log: serve
-        $this->log('admin', '[WebsiteSQL\App] [serve] Function called');
+        $this->log('admin', '[WebsiteSQL\WebsiteSQL\App] [serve] Function called');
 
         // Check if router is set
         if (!$this->routing) {

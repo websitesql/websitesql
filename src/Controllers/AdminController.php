@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace WebsiteSQL\Controllers;
+namespace WebsiteSQL\WebsiteSQL\Controllers;
 
-use WebsiteSQL\App;
-use WebsiteSQL\Controllers\Auth\LoginController;
-use WebsiteSQL\Controllers\Auth\RegisterController;
+use WebsiteSQL\WebsiteSQL\App;
+use WebsiteSQL\WebsiteSQL\Controllers\Auth\LoginController;
+use WebsiteSQL\WebsiteSQL\Controllers\Auth\RegisterController;
 use Exception;
 
 class AdminController

@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace WebsiteSQL\Providers;
+namespace WebsiteSQL\WebsiteSQL\Providers;
 
 use Medoo\Medoo;
 use Exception;
@@ -90,7 +90,7 @@ class MigrationsProvider
             require_once $this->migrationsPath . '/' . $migrationFile;
 
             // Get the class name
-            $className = 'WebsiteSQL\Migrations\\' . pathinfo($migrationFile, PATHINFO_FILENAME);
+            $className = 'WebsiteSQL\WebsiteSQL\Migrations\\' . pathinfo($migrationFile, PATHINFO_FILENAME);
 
             // Create a new instance of the class
             $migration = new $className;
@@ -120,7 +120,7 @@ class MigrationsProvider
             // Loop through the migrations
             foreach ($this->migrations as $migration) {
                 // Get the version of the migration
-                $version = str_replace('Version', '', str_replace('WebsiteSQL\Migrations\\', '', get_class($migration)));
+                $version = str_replace('Version', '', str_replace('WebsiteSQL\WebsiteSQL\Migrations\\', '', get_class($migration)));
                 
                 // Check if the migration has already been run
                 if ($version <= $latestVersion) {
@@ -163,7 +163,7 @@ class MigrationsProvider
                 $version = $migration['version'];
 
                 // Get the migration class
-                $className = 'WebsiteSQL\Migrations\Version' . $version;
+                $className = 'WebsiteSQL\WebsiteSQL\Migrations\Version' . $version;
                 $migration = new $className;
 
                 // Roll back the migration

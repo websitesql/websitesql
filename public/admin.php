@@ -3,7 +3,7 @@
 // Import autoload
 require dirname(__DIR__) . '/vendor/autoload.php';
 
-use WebsiteSQL\App;
+use WebsiteSQL\WebsiteSQL\App;
 
 // Create a new instance of the App
 $app = new App();

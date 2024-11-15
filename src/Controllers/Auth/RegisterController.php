@@ -1,16 +1,16 @@
 <?php declare(strict_types=1);
 
-namespace WebsiteSQL\Controllers\Auth;
+namespace WebsiteSQL\WebsiteSQL\Controllers\Auth;
 
 use Psr\Http\Server\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Psr\Http\Message\ResponseInterface;
 use Laminas\Diactoros\Response\HtmlResponse;
-use WebsiteSQL\Exceptions\InvalidTokenException;
-use WebsiteSQL\Exceptions\MissingRequiredFieldsException;
-use WebsiteSQL\Exceptions\UserAlreadyExistsException;
-use WebsiteSQL\Exceptions\PasswordMismatchException;
-use WebsiteSQL\App;
+use WebsiteSQL\WebsiteSQL\Exceptions\InvalidTokenException;
+use WebsiteSQL\WebsiteSQL\Exceptions\MissingRequiredFieldsException;
+use WebsiteSQL\WebsiteSQL\Exceptions\UserAlreadyExistsException;
+use WebsiteSQL\WebsiteSQL\Exceptions\PasswordMismatchException;
+use WebsiteSQL\WebsiteSQL\App;
 use Exception;
 
 class RegisterController implements RequestHandlerInterface

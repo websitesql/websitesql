@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace WebsiteSQL\Modules;
+namespace WebsiteSQL\WebsiteSQL\Modules;
 
-use WebsiteSQL\Exceptions\ModuleNotEnabledException;
-use WebsiteSQL\Providers\RenderingProvider;
-use WebsiteSQL\App;
+use WebsiteSQL\WebsiteSQL\Exceptions\ModuleNotEnabledException;
+use WebsiteSQL\WebsiteSQL\Providers\RenderingProvider;
+use WebsiteSQL\WebsiteSQL\App;
 use Medoo\Medoo;
 
 class Environment

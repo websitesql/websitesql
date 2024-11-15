@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace WebsiteSQL\Migrations;
+namespace WebsiteSQL\WebsiteSQL\Migrations;
 
 use Medoo\Medoo;
 

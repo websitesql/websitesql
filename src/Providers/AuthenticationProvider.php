@@ -1,14 +1,14 @@
 <?php declare(strict_types=1);
 
-namespace WebsiteSQL\Providers;
+namespace WebsiteSQL\WebsiteSQL\Providers;
 
-use WebsiteSQL\Exceptions\MissingRequiredFieldsException;
-use WebsiteSQL\Exceptions\UserNotFoundException;
-use WebsiteSQL\Exceptions\IncorrectPasswordException;
-use WebsiteSQL\Exceptions\UserNotApprovedException;
-use WebsiteSQL\Exceptions\UserLockedOutException;
-use WebsiteSQL\Exceptions\EmailNotVerifiedException;
-use WebsiteSQL\App;
+use WebsiteSQL\WebsiteSQL\Exceptions\MissingRequiredFieldsException;
+use WebsiteSQL\WebsiteSQL\Exceptions\UserNotFoundException;
+use WebsiteSQL\WebsiteSQL\Exceptions\IncorrectPasswordException;
+use WebsiteSQL\WebsiteSQL\Exceptions\UserNotApprovedException;
+use WebsiteSQL\WebsiteSQL\Exceptions\UserLockedOutException;
+use WebsiteSQL\WebsiteSQL\Exceptions\EmailNotVerifiedException;
+use WebsiteSQL\WebsiteSQL\App;
 
 class AuthenticationProvider
 {

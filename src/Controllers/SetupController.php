@@ -1,13 +1,13 @@
 <?php declare(strict_types=1);
 
-namespace WebsiteSQL\Controllers;
+namespace WebsiteSQL\WebsiteSQL\Controllers;
 
-use WebsiteSQL\App;
-use WebsiteSQL\Exceptions\InvalidTokenException;
-use WebsiteSQL\Exceptions\MissingRequiredFieldsException;
-use WebsiteSQL\Exceptions\DatabaseConnectionFailedException;
-use WebsiteSQL\Exceptions\PasswordMismatchException;
-use WebsiteSQL\Providers\MigrationsProvider;
+use WebsiteSQL\WebsiteSQL\App;
+use WebsiteSQL\WebsiteSQL\Exceptions\InvalidTokenException;
+use WebsiteSQL\WebsiteSQL\Exceptions\MissingRequiredFieldsException;
+use WebsiteSQL\WebsiteSQL\Exceptions\DatabaseConnectionFailedException;
+use WebsiteSQL\WebsiteSQL\Exceptions\PasswordMismatchException;
+use WebsiteSQL\WebsiteSQL\Providers\MigrationsProvider;
 use Exception;
 
 class SetupController

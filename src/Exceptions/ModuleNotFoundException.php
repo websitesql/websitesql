@@ -1,5 +1,5 @@
 <?php declare(strict_types=1);
 
-namespace WebsiteSQL\Exceptions;
+namespace WebsiteSQL\WebsiteSQL\Exceptions;
 
 class ModuleNotFoundException extends \Exception {}
