@@ -1,0 +1,616 @@
+/*** General ***/
+body {
+	margin: 0;
+    padding: 0;
+    --header-bg-color: #ffffff;
+    --header-bg-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
+    --main-bg-color: #ffffff;
+    --footer-bg-color: #eeeeee;
+    --main-txt-color: #333333;
+    --bootstrap-border-color: #dee2e6;
+    --angle-down-img: url(/angle-down-dark.svg);
+    background-color: var(--main-bg-color);
+    color: var(--main-txt-color) !important;
+    transition: color .5s ease, background-color .5s ease;
+    font-family: VisbyCFMedium;
+    font-weight: 600;
+}
+body.dark {
+    --header-bg-color: #232526;
+    --header-bg-shadow: transparent;
+    --main-bg-color: #17191a;
+    --footer-bg-color: #232526;
+    --main-txt-color: #ffffff;
+    --bootstrap-border-color: #232526;
+    --angle-down-img: url(/angle-down-light.svg);
+}
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+.wrapper {
+	display:block;
+	max-width:1200px;
+	margin:0px auto;
+	padding:0px 30px;
+}
+.wrapper:after {
+	content:"";
+	display:table;
+	clear:both;
+}
+
+
+/*** Bootstrap Override ***/
+table {
+    color: var(--main-txt-color) !important;
+}
+.modal-header {
+    background-color: var(--header-bg-color);
+    border-color: var(--bootstrap-border-color);
+}
+.modal-body {
+    background-color: var(--main-bg-color);
+}
+.modal-footer {
+    background-color: var(--header-bg-color);
+    border-color: var(--bootstrap-border-color);
+}
+
+
+/*** Fonts ***/
+@font-face {
+    font-family: VisbyCFBold;
+    src: url(./Visby-CF-Bold.ttf);
+}
+@font-face {
+    font-family: VisbyCFMedium;
+    src: url(./Visby-CF-Medium.ttf);
+}
+@font-face {
+    font-family: VisbyCFThin;
+    src: url(./Visby-CF-Thin.ttf);
+}
+
+
+/*** Message Box ***/
+.message-box {
+    height: 450px;
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: url(/message.png);
+    background-repeat: no-repeat;
+    background-size: 400px 450px;
+    z-index: 99;
+}
+.message-box h2 {
+    margin: 44px 25px 44px 120px;
+    text-align: center;
+    font: 22px monospace;
+}
+.message-box p {
+    margin: 60px 35px 20px;
+    text-align: center;
+    font: 24px monospace;
+}
+.message-box input {
+    margin: 0 35px 5px;
+    text-align: center;
+    font: 24px monospace;
+    width: calc(100% - 70px);
+}
+.message-box button {
+    margin: 10px 35px;
+    text-align: center;
+    font: 24px monospace;
+    width: calc(100% - 70px);
+}
+.message-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000000;
+    opacity: 0.5;
+    z-index: 98;
+}
+
+
+/*** Header ***/
+.header {
+	box-shadow: var(--header-bg-shadow);
+	height: 68px;
+    background-color: var(--header-bg-color);
+    transition: color .5s ease, background-color .5s ease;
+}
+.header .logo {
+    color: var(--main-txt-color);
+    display: inline-block;
+    text-decoration: none;
+    margin: 16px 0;
+}
+.header .logo svg {
+    height: 38px;
+}
+.header .logo svg .svgText {
+    fill: var(--main-txt-color);
+}
+.header .logo h1 {
+    margin: -4px 0 0px;
+    font-family: VisbyCFMedium;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 22px;
+    display: block;
+}
+.header .logo h2 {
+    margin: 0 0 -2px;
+    font-family: VisbyCFBold;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 28px;
+    display: block;
+}
+.header .menu {
+    display: inline-block;
+    float: right;
+}
+.header .menu ul {
+    margin: 0;
+    padding: 18px 0;
+    text-decoration: none;
+    list-style: none;
+}
+.header .menu ul li {
+    display: inline-block;
+    margin: 0 0 0 25px;
+}
+.header .menu ul li a {
+    text-decoration: none;
+    font-family: VisbyCFBold;
+    font-size: 16px;
+    color: var(--main-txt-color);
+    transition: color .5s ease;
+    padding: 4px 0;
+    display: block;
+    cursor: pointer;
+}
+.header .menu ul li a i {
+    margin: 0 6px 0 0;
+}
+
+
+/*** Page - General ***/
+.page {
+	margin: 35px auto 0;
+}
+.page h1 {
+    font-family: VisbyCFBold;
+    font-size: 40px;
+    line-height: 1;
+    color: var(--main-txt-color);
+    transition: color .5s ease;
+    margin: 0 0 15px;
+}
+.page .button-board {
+    margin: 15px 0;
+}
+.page .form-control {
+    color: var(--main-txt-color);
+    background-color: var(--main-bg-color);
+    transition: color .5s ease, background-color .5s ease;
+    font-family: VisbyCFBold;
+}
+.page .card-columns .card {
+    background-color: var(--main-bg-color);
+    color: var(--main-txt-color);
+    border-color: var(--main-txt-color);
+}
+.page .form-group label {
+    color: var(--main-txt-color);
+    font-size: 16px;
+}
+
+
+/*** Page - Vertical Menu ***/
+.page .vertical-menu {
+    border-bottom: 4px solid var(--main-txt-color);
+    transition: border-bottom .5s ease;
+    margin: 0 0 20px;
+    overflow-x: auto;
+}
+.page .vertical-menu ul {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+.page .vertical-menu ul li {
+    display: table-cell;
+    margin: 0;
+}
+.page .vertical-menu ul li a {
+    text-decoration: none;
+    font-family: VisbyCFBold;
+    font-size: 16px;
+    color: var(--main-txt-color);
+    transition: color .5s ease;
+    padding: 8px 15px;
+    display: block;
+}
+.page .vertical-menu ul li.active a {
+    color: var(--main-bg-color);
+    background-color: var(--main-txt-color);
+    transition: color .5s ease, background-color .5s ease;
+}
+
+
+/*** Page - Dashboard Tile ***/
+.page .tile {
+    padding: 25px 15px;
+    height: 200px;
+    background-color: #454545;
+    color: #ffffff;
+    position: relative;
+    margin-bottom: 6px;
+    margin-left: -12px;
+    margin-right: -12px;
+    cursor: pointer;
+    display: block;
+    text-decoration: none;
+}
+.page .tile i {
+    color: inherit;
+    font-size: 45px;
+    margin: 0;
+    position: absolute;
+    right: 35px;
+    top: 30px;
+}
+.page .tile h1 {
+    color: inherit;
+    font-family: VisbyCFBold;
+    font-size: 35px;
+    margin: 0 0 14px;
+    padding-right: 90px;
+}
+.page .tile p {
+    color: inherit;
+    font-family: VisbyCFMedium;
+    font-size: 23px;
+    margin: 0;
+}
+
+
+/*** Page - Editor Accordion ***/
+.page .ui-accordion {
+    margin-top: 20px;
+}
+.page .ui-accordion-header {
+    border: none;
+    border-top: 1px solid #ccc;
+    background-color: var(--main-bg-color);
+    color: var(--main-txt-color);
+    transition: color .5s ease, background-color .5s ease;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    border-radius: 0px;
+    padding: 15px;
+    margin: 0;
+}
+.page .ui-accordion-header .ui-icon {
+    background-image: var(--angle-down-img);
+    background-repeat: no-repeat;
+    background-size: 28px 28px;
+    background-position: -5px -5px;
+    margin: 0;
+    width: 18px;
+    height: 18px;
+    transform: rotate(0deg);
+    transition: transform .5s;
+    float: right;
+}
+.page .ui-accordion-header.ui-state-active .ui-icon {
+    transform: rotate(180deg);
+}
+.page .ui-accordion-header:focus {
+    outline: 0;
+}
+.page .ui-accordion-header:last-of-type {
+    border-bottom: 1px solid #ccc;
+}
+.page .ui-accordion-header.ui-state-active:last-of-type {
+    border-bottom: none;
+}
+.page .ui-accordion-content {
+    border: none;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    overflow: unset;
+    background-color: var(--main-bg-color);
+    color: var(--main-txt-color);
+    transition: color .5s ease, background-color .5s ease;
+}
+.page .ui-accordion-content.ui-accordion-content-active:last-of-type {
+    border-bottom: 1px solid #ccc;
+}
+
+
+/*** Page - Tabs ***/
+.page .ui-tabs {
+    border: 0 !important;
+    padding: 0;
+    font-family: VisbyCFBold;
+    font-size: 16px;
+    font-weight: 100;
+    background-color: var(--main-bg-color);
+    color: var(--main-txt-color);
+    transition: color .5s ease, background-color .5s ease;
+}
+.page .ui-tabs ul {
+    border: none;
+    background: none;
+    padding: 0 8px !important;
+}
+.page .ui-tabs .ui-tabs-tab {
+    margin: 1px 4px 0 0 !important;
+    background-color: var(--main-bg-color);
+    transition: color .5s ease, background-color .5s ease;
+}
+.page .ui-tabs .ui-tabs-tab a {
+    color: var(--main-txt-color);
+}
+.page .ui-tabs .ui-tabs-tab a:focus {
+    outline:0;
+}
+.page .ui-tabs .ui-tabs-active {
+    border: 1px solid var(--main-txt-color);
+    border-bottom: none;
+    background: var(--main-bg-color);
+    margin-bottom: -1px !important;
+}
+.page .ui-tabs .ui-tabs-active a {
+    color: var(--main-txt-color);
+}
+.page .ui-tabs .ui-tabs-panel {
+    border: 1px solid var(--main-txt-color);
+    border-radius: 4px;
+    font-family: VisbyCFMedium;
+    font-size: 16px;
+}
+
+
+/*** Page - Footer ***/
+.footer {
+    background-color: var(--footer-bg-color);
+    transition: background-color .5s ease;
+    margin-top: 50px;
+}
+.footer .left {
+    text-align: left;
+}
+.footer .right {
+    text-align: right;
+}
+.footer p {
+    text-decoration: none;
+    font-family: VisbyCFBold;
+    font-size: 16px;
+    color: var(--main-txt-color);
+    transition: color .5s ease;
+    padding: 13px 0;
+    display: block;
+    margin: 0;
+}
+
+
+/*** Page - Login ***/
+.page.login {
+    max-width: 450px;
+    width: 100%;
+    margin: 110px auto;
+    display: flow-root;
+}
+.page.login h1 {
+	margin: 0 0 20px 0;
+    font-family: VisbyCFBold;
+    font-size: 32px;
+    text-align: center;
+}
+.page.login p {
+	margin: 20px 0 25px;
+    font-family: VisbyCFMedium;
+    font-size: 16px;
+    font-weight: 100;
+    text-align: center;
+}
+.page.login .login_button {
+	width: calc( 50% - 10px ) !important;
+    float: left;
+    margin: 0 10px 0 0 !important;
+}
+.page.login .password_reset_button {
+	width: calc( 50% - 10px ) !important;
+    float: left;
+    margin: 0 0 0 10px !important;
+}
+.page.login .register_button {
+	width: 100% !important;
+    float: left;
+    margin: 0 !important;
+}
+.page.login .reset_button {
+	width: 100% !important;
+    float: left;
+    margin: 0 !important;
+}
+.page.login .field-group {
+	position: relative;
+    display: block;
+    width: 100%;
+    margin: 0 0 20px 0;
+}
+.page.login .field-group input:focus {
+	outline:0;
+	border-color: #0772ff;
+}
+.page.login .field-group input:focus + label {
+	top: -8px;
+    z-index: 1;
+    font-size: 14px;
+	color: #0772ff;
+}
+.page.login .field-group input:valid {
+	border-color: #0772ff;
+}
+.page.login .field-group input:valid + label {
+	top: -8px;
+    z-index: 1;
+    font-size: 14px;
+	color: #0772ff;
+}
+.page.login label {
+	font-family: VisbyCFMedium;
+    position: absolute;
+    top: 13px;
+    font-size: 16px;
+    left: 8px;
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    width: auto;
+    z-index: -1;
+    font-weight: 100;
+    letter-spacing: .5px;
+    padding: 0 8px;
+    color: var(--main-txt-color);
+    background: var(--main-bg-color);
+}
+.page.login input, 
+.page.login textarea, 
+.page.login select {
+	-webkit-appearance: none;
+    width: 100%;
+    font-size: 16px;
+    font-family: VisbyCFBold;
+    padding: 13px 15px;
+    display: inline-block;
+    box-sizing: border-box;
+    -webkit-border-radius: 4px;
+	border-radius: 4px;
+    background: transparent;
+	border: 1px solid #dad9d9;
+}
+.page.login input[type=submit] {
+	text-align: center;
+	border-radius: 4px;
+	width: auto;
+	display: inline-block;
+	background: var(--main-txt-color);
+	transition: all 0.5s;
+	color: var(--main-bg-color);
+	padding: 11px 18px;
+	border: none;
+	margin: 10px 8px 0 0;
+	cursor: pointer;
+	font-family: VisbyCFBold;
+	font-size: 16px;
+	text-decoration: none;
+}
+.page.login input[type=submit]:hover {
+	background-color: #5e5e5e;
+}
+
+
+/** General - Widgets ***/
+.widget {
+	left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    top: 0;
+    visibility: hidden;
+    opacity: 0;
+	transition: all .5s;
+}
+.widget.open {
+	visibility: visible;
+    opacity: 1;
+}
+.widget.syncing .overlay {
+	background: #3a3a3a70;
+    width: 100%;
+    height: 100%;
+}
+.widget.syncing .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 10px;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.widget.syncing .container i {
+    display: inline-block;
+    margin: 0 10px 0 0;
+    font-size: 26px;
+}
+.widget.syncing .container p {
+	display: inline-block;
+    margin: 2px 0;
+    font-family: VisbyCFMedium;
+    font-size: 18px;
+    font-weight: 100;
+    vertical-align: top;
+}
+
+
+/* Mobile */
+@media screen and (max-width: 900px) {
+	/*** Menu - Main ***/
+	.header .logo {
+        height: 40px;
+        margin-top: 10px;
+	}
+    .header .menu ul {
+        padding: 17px 0;
+    }
+    .header .menu ul li a {
+        padding: 0;
+        vertical-align: top;
+    }
+    .header .menu ul li a span {
+        display: none;
+    }
+	.header .menu ul li a i {
+        margin: 0;
+        font-size: 20px;
+        vertical-align: middle;
+    }
+    
+    /*** Page ***/
+	.page {
+        margin: 20px auto 0;
+    }
+    .page h1 {
+        font-size: 30px;
+    }
+	
+	/*** Page - Login ***/
+	.page.login {
+		position: relative;
+		top: 0;
+		left: 0;
+		padding: 40px 0 0;
+		transform: none;
+	}
+	
+}

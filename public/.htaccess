@@ -1,0 +1,25 @@
+<IfModule mod_rewrite.c>
+    # Enable Rewrite Engine
+    RewriteEngine On
+    RewriteBase /
+
+    # Redirect HTTP to HTTPS
+    RewriteCond %{HTTPS} off
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # Disable MultiViews to avoid content negotiation issues
+    Options -MultiViews
+
+    # Route all requests to index.php if the requested file or directory does not exist
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php?url=$1 [L,QSA]
+</IfModule>
+
+# Deny access to specific file types (log and dat files)
+<FilesMatch "\.(log|dat)$">
+    Require all denied
+</FilesMatch>
+
+# Deny direct access to the wsql-includes folder
+RewriteRule ^wsql-includes/ - [L,F]

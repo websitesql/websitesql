@@ -1,0 +1,6 @@
+vendor/
+composer.lock
+.env
+web.config
+node_modules/
+package-lock.json
