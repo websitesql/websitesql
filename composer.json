@@ -1,6 +1,9 @@
 {
     "name": "websitesql/websitesql",
     "description": "A simple, easy-to-use, low-code content management system.",
+    "homepage": "https://www.websitesql.com",
+    "keywords": ["cms", "content management system", "low-code", "website builder"],
+    "minimum-stability": "dev",
     "type": "project",
     "license": "MIT",
     "authors": [
