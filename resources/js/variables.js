@@ -11,7 +11,7 @@
  * Global Variables
  */
 
-var public_url = window.location.origin;                                                    // Get the public URL of the website
+var public_url = window.location.origin;                                                                            // Get the public URL of the website
 
 
 /*
@@ -19,15 +19,16 @@ var public_url = window.location.origin;                                        
  *
  * Set variables for the API endpoints
  */
-const logout_endpoint = public_url + '/api/auth/logout';                                    // Logout endpoint
-const users_me_endpoint = public_url + '/api/users/me';                                     // Get current user endpoint
-const users_me_password_reset_endpoint = public_url + '/api/users/me/reset-password';       // Reset current users password endpoint
-const users_endpoint = public_url + '/api/users';                                           // Users endpoint
-const users_single_endpoint = public_url + '/api/users/{id}';                               // Users Single endpoint
-const roles_endpoint = public_url + '/api/roles';                                           // Roles endpoint
-const roles_single_endpoint = public_url + '/api/roles/{id}';                               // Roles Single endpoint
-const roles_single_permissions_endpoint = public_url + '/api/roles/{id}/permissions';       // Roles Single Permissions endpoint
-const permissions_endpoint = public_url + '/api/permissions';                               // Permissions endpoint
+const logout_endpoint = public_url + '/api/auth/logout';                                                            // Logout endpoint
+const users_me_endpoint = public_url + '/api/users/me';                                                             // Get current user endpoint
+const users_me_password_reset_endpoint = public_url + '/api/users/me/reset-password';                               // Reset current users password endpoint
+const users_endpoint = public_url + '/api/users';                                                                   // Users endpoint
+const users_single_endpoint = public_url + '/api/users/{id}';                                                       // Users Single endpoint
+const roles_endpoint = public_url + '/api/roles';                                                                   // Roles endpoint
+const roles_single_endpoint = public_url + '/api/roles/{id}';                                                       // Roles Single endpoint
+const roles_single_permissions_endpoint = public_url + '/api/roles/{id}/permissions';                               // Roles Single Permissions endpoint
+const roles_single_permissions_single_endpoint = public_url + '/api/roles/{role_id}/permissions/{permission_id}';   // Roles Single Permissions Single endpoint
+const permissions_endpoint = public_url + '/api/permissions';                                                       // Permissions endpoint
 
 
 /*
