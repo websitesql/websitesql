@@ -59,7 +59,7 @@ class PostController implements RequestHandlerInterface
             $public_access = filter_var($body['public_access'], FILTER_SANITIZE_NUMBER_INT);
 
             // Generate a random UUID for the user
-            $uuid = $this->app->getUtilities()->uuid(4);
+            $uuid = $this->app->getUtilities()->generateUuid(4);
 
             // Insert the user into the database
             $this->app->getDatabase()->insert($this->app->getStrings()->getTableRoles(), [

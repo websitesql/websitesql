@@ -68,7 +68,7 @@ class PostController implements RequestHandlerInterface
             $password = password_hash($password, PASSWORD_ARGON2ID);
 
             // Generate a random UUID for the user
-            $uuid = $this->app->getUtilities()->uuid(4);
+            $uuid = $this->app->getUtilities()->generateUuid(4);
 
             // Insert the user into the database
             $this->app->getDatabase()->insert($this->app->getStrings()->getTableUsers(), [
