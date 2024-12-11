@@ -10,6 +10,7 @@ use Psr\Http\Message\ResponseInterface;
 use Laminas\Diactoros\Response\HtmlResponse;
 use Laminas\Diactoros\Response\JsonResponse;
 use WebsiteSQL\WebsiteSQL\App;
+use WebsiteSQL\WebsiteSQL\Exceptions\DuplicateRoleNameException;
 use WebsiteSQL\WebsiteSQL\Exceptions\MissingRequiredFieldsException;
 use WebsiteSQL\WebsiteSQL\Exceptions\PasswordMismatchException;
 use WebsiteSQL\WebsiteSQL\Exceptions\RoleNotFoundException;
@@ -43,6 +44,9 @@ class PostController implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request): ResponseInterface
     {
         try {
+            // Get the current user
+            $user = $request->getAttribute('user');
+
             // Get the request body
             $body = json_decode($request->getBody()->getContents(), true);
 
@@ -58,6 +62,13 @@ class PostController implements RequestHandlerInterface
             $administrator = filter_var($body['administrator'], FILTER_SANITIZE_NUMBER_INT);
             $public_access = filter_var($body['public_access'], FILTER_SANITIZE_NUMBER_INT);
 
+            // Check if a role already exists with the same name
+            $role = $this->app->getDatabase()->select($this->app->getStrings()->getTableRoles(), 'id', ['name' => $name]);
+
+            if (count($role) > 0) {
+                throw new DuplicateRoleNameException();
+            }
+
             // Generate a random UUID for the user
             $uuid = $this->app->getUtilities()->generateUuid(4);
 
@@ -70,6 +81,7 @@ class PostController implements RequestHandlerInterface
                 'administrator' => $administrator,
                 'public_access' => $public_access,
                 'created_at' => $this->app->getUtilities()->getDateTime(),
+                'created_by' => $user['id']
             ]);
 
             // Get the ID of the new user
@@ -86,21 +98,15 @@ class PostController implements RequestHandlerInterface
                 'status' => 'failed',
                 'message' => 'Missing required fields'
             ], 400);
-        } catch (UserAlreadyExistsException $e) {
+        } catch (DuplicateRoleNameException $e) {
             return new JsonResponse([
                 'status' => 'failed',
-                'message' => 'A user with the email address already exists'
-            ], 400);
-        } catch (RoleNotFoundException $e) {
-            return new JsonResponse([
-                'status' => 'failed',
-                'message' => 'The role you specified does not exist'
+                'message' => 'A role with the same name already exists'
             ], 400);
         } catch (Exception $e) {
             return new JsonResponse([
                 'status' => 'failed',
-                'message' => 'Failed to insert user',
-                'error' => $e->getMessage()
+                'message' => 'Failed to insert role: ' . $e->getMessage()
             ], 500);
         }
     }
