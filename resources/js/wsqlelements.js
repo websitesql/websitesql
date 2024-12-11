@@ -280,4 +280,125 @@ class WsqlElements {
 
         return div;
     }
+
+    /**
+     * Custom Dropdown with Search
+     */
+    static customDropdown(inputName, options = [], attributes = {}) {
+        const dropdownContainer = document.createElement('div');
+        dropdownContainer.className = 'relative';
+
+        // Hidden input for storing value
+        const hiddenInput = document.createElement('input');
+        hiddenInput.type = 'hidden';
+        hiddenInput.name = inputName;
+        hiddenInput.value = ''; // Initial empty value
+
+        const dropdownButton = document.createElement('button');
+        dropdownButton.type = 'button';
+        dropdownButton.className = `block w-full font-baloo h-10 py-1 px-5 border text-neutral-800 dark:text-white text-left border-neutral-300 rounded-md shadow-sm focus:outline-none focus:ring-neutral-600 focus:border-neutral-600 text-sm sm:text-base bg-transparent ${attributes.class || ''}`;
+        dropdownButton.textContent = attributes.placeholder || 'Select an option';
+
+        const dropdownListContainer = document.createElement('div');
+        dropdownListContainer.className = 'absolute z-10 mt-1 p-3 w-full bg-white dark:bg-neutral-800 shadow-lg rounded-md overflow-hidden border border-neutral-300 hidden';
+
+        const searchInput = document.createElement('input');
+        searchInput.type = 'text';
+        searchInput.className = 'block w-full font-baloo h-10 py-1 px-5 border border-neutral-300 text-neutral-800 dark:text-white rounded-md shadow-sm focus:outline-none focus:ring-neutral-600 focus:border-neutral-600 text-sm sm:text-base bg-transparent';
+        searchInput.placeholder = 'Search...';
+
+        const optionsContainer = document.createElement('div');
+        optionsContainer.className = 'max-h-60 overflow-y-auto mt-2 flex flex-col gap-2';
+
+        options.forEach(option => {
+            const optionDiv = document.createElement('div');
+            optionDiv.className = 'p-2 hover:bg-neutral-200 dark:hover:bg-neutral-700 cursor-pointer rounded-md';
+            optionDiv.dataset.value = option.id;
+
+            const optionTitle = document.createElement('div');
+            optionTitle.className = 'font-baloo font-medium text-gray-900 dark:text-white mb-1 flex gap-2 items-center';
+            optionTitle.textContent = option.title;
+
+            if (option.tag) {
+                // Split tag by ; and create a span for each tag
+                const tags = option.tag.split(';');
+                tags.forEach(tag => {
+                    const optionTitleTag = document.createElement('span');
+                    optionTitleTag.className = 'inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-blue-100 text-blue-800';
+                    optionTitleTag.textContent = tag;
+                    optionTitle.appendChild(optionTitleTag);
+                });
+            }
+
+            const optionDescription = document.createElement('div');
+            optionDescription.className = 'text-sm font-baloo text-gray-600 dark:text-gray-400';
+            optionDescription.textContent = option.description;
+
+            optionDiv.appendChild(optionTitle);
+            optionDiv.appendChild(optionDescription);
+
+            optionDiv.addEventListener('click', () => {
+                dropdownButton.textContent = option.title;
+                dropdownListContainer.classList.add('hidden');
+
+                // Update hidden input value
+                hiddenInput.value = option.id;
+
+                if (attributes.onSelect) {
+                    attributes.onSelect(option);
+                }
+            });
+
+            optionsContainer.appendChild(optionDiv);
+        });
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            Array.from(optionsContainer.children).forEach(optionDiv => {
+                const title = optionDiv.querySelector('.font-medium').textContent.toLowerCase();
+                const description = optionDiv.querySelector('.text-sm').textContent.toLowerCase();
+                const matches = title.includes(searchTerm) || description.includes(searchTerm);
+                optionDiv.style.display = matches ? '' : 'none';
+            });
+        });
+
+        dropdownButton.addEventListener('click', () => {
+            dropdownListContainer.classList.toggle('hidden');
+        });
+
+        dropdownListContainer.appendChild(searchInput);
+        dropdownListContainer.appendChild(optionsContainer);
+        dropdownContainer.appendChild(hiddenInput);
+        dropdownContainer.appendChild(dropdownButton);
+        dropdownContainer.appendChild(dropdownListContainer);
+
+        // Close the dropdown if clicked outside
+        document.addEventListener('click', (e) => {
+            if (!dropdownContainer.contains(e.target)) {
+                dropdownListContainer.classList.add('hidden');
+            }
+        });
+
+        return dropdownContainer;
+    }
+
+    /**
+     * Label Custom Dropdown with Search
+     */
+    static labelCustomDropdown(inputName, labelText, options = [], attributes = {}, divClass = '') {
+        const div = document.createElement('div');
+        div.className = divClass;
+
+        const label = document.createElement('label');
+        label.htmlFor = inputName;
+        label.className = 'block mb-1 text-base font-baloo font-medium text-gray-700 dark:text-white transition-all duration-300';
+        label.textContent = labelText;
+        div.appendChild(label);
+
+        const input = this.customDropdown(inputName, options, attributes);
+        div.appendChild(input);
+
+        return div;
+    }
+
 }
