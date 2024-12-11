@@ -50,6 +50,27 @@ class PermissionsProvider
     public function init(): void
     {
         /*----------------------------------------*
+         * App: Updates Routes
+         *----------------------------------------*/
+        $this->registerPermission('app', 'wsql.updates.read', 'Read the updates');
+
+        /*----------------------------------------*
+         * App: Media Routes
+         *----------------------------------------*/
+        $this->registerPermission('app', 'wsql.media.read', 'Read the media');
+
+        /*----------------------------------------*
+         * App: Account Routes
+         *----------------------------------------*/
+        $this->registerPermission('app', 'wsql.account.read', 'Read the currents users account', [
+            'wsql.api.users.me.read'
+        ]);
+        $this->registerPermission('app', 'wsql.account.update', 'Update the currents users account', [
+            'wsql.api.users.me.update',
+            'wsql.api.users.me.reset-password'
+        ]);
+
+        /*----------------------------------------*
          * App: Settings User Routes
          *----------------------------------------*/
         $this->registerPermission('app', 'wsql.settings.users.create', '', [
@@ -91,10 +112,26 @@ class PermissionsProvider
 
         
         /*----------------------------------------*
+         * API: Media
+         *----------------------------------------*/
+        $this->registerPermission('api', 'wsql.api.media.upload', 'Upload media files');
+
+        /*----------------------------------------*
+         * API: Settings Routes
+         *----------------------------------------*/
+        $this->registerPermission('api', 'wsql.api.settings.logging.update', 'Update the logging settings');
+        $this->registerPermission('api', 'wsql.api.customizations.read', 'Read the customizations');
+        $this->registerPermission('api', 'wsql.api.settings.branding.read', 'Read the branding settings');
+        $this->registerPermission('api', 'wsql.api.settings.branding.update', 'Update the branding settings');
+        
+        /*----------------------------------------*
          * API: User Routes
          *----------------------------------------*/
         $this->registerPermission('api', 'wsql.api.users.read', 'Read all users');
         $this->registerPermission('api', 'wsql.api.users.create', 'Create a user');
+        $this->registerPermission('api', 'wsql.api.users.me.read', 'Allows the user to read their own user');
+        $this->registerPermission('api', 'wsql.api.users.me.update', 'Allows the user to update their own user');
+        $this->registerPermission('api', 'wsql.api.users.me.reset-password', 'Allows the user to reset their own password');
         $this->registerPermission('api', 'wsql.api.users.single.read', 'Read any single user');
         $this->registerPermission('api', 'wsql.api.users.single.update', 'Update any single user');
         $this->registerPermission('api', 'wsql.api.users.single.delete', 'Delete any single user');
@@ -108,6 +145,7 @@ class PermissionsProvider
         $this->registerPermission('api', 'wsql.api.roles.single.read', 'Read any single role');
         $this->registerPermission('api', 'wsql.api.roles.single.update', 'Update any single role');
         $this->registerPermission('api', 'wsql.api.roles.single.delete', 'Delete any single role');
+        $this->registerPermission('api', 'wsql.api.roles.single.permissions.create', 'Add new permissions to any single role');
         $this->registerPermission('api', 'wsql.api.roles.single.permissions.read', 'Read the permissions of any single role');
         $this->registerPermission('api', 'wsql.api.roles.single.permissions.update', 'Update the permissions of any single role');
         $this->registerPermission('api', 'wsql.api.roles.single.permissions.delete', 'Delete the permissions of any single role');
