@@ -3,6 +3,7 @@ public/wsql-contents/uploads/
 vendor/
 composer.lock
 .env
+.env.test
 web.config
 node_modules/
 package-lock.json
