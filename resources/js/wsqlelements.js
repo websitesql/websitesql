@@ -55,12 +55,12 @@ class WsqlElements {
 
         // Create inner text spans
         const spanText1 = document.createElement("span");
-        spanText1.className = "text-base font-baloo font-medium text-gray-900";
+        spanText1.className = "text-base font-baloo font-medium text-gray-900 dark:text-white";
         spanText1.id = "availability-label";
         spanText1.textContent = name;
 
         const spanText2 = document.createElement("span");
-        spanText2.className = "text-sm font-baloo text-gray-500";
+        spanText2.className = "text-sm font-baloo text-gray-500 dark:text-gray-400";
         spanText2.id = "availability-description";
         spanText2.textContent = description;
 
