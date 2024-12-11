@@ -454,17 +454,17 @@ class RoutingProvider
         $this->registerAppRoute(['GET', 'POST'], '/media', [\WebsiteSQL\WebsiteSQL\Controllers\App\DashboardController::class, 'handle'], 'media', [
             'auth' => true,
             'app_access' => true,
-            'permissions' => 'wsql.roles.read'
+            'permissions' => 'wsql.media.read'
         ]);
 
         // Register route: Updates
         $this->registerAppRoute('GET', '/updates', [\WebsiteSQL\WebsiteSQL\Controllers\App\UpdateController::class, 'handle'], 'updates', [
-            'auth' => true
+            'permissions' => 'wsql.updates.read'
         ]);
 
         // Register route: Account
         $this->registerAppRoute('GET', '/account', [\WebsiteSQL\WebsiteSQL\Controllers\App\AccountController::class, 'handle'], 'account', [
-            'auth' => true
+            'permissions' => 'wsql.account.read'
         ]);
 
 
@@ -527,7 +527,7 @@ class RoutingProvider
     {
         // Register Route: Media Upload POST
         $this->registerApiRoute('POST', '/media/upload', [\WebsiteSQL\WebsiteSQL\Controllers\Api\Media\Upload\PostController::class, 'handle'], 'media.upload.post', [
-            'auth' => true
+            'permissions' => 'wsql.api.media.upload'
         ]);
 
 
@@ -572,17 +572,17 @@ class RoutingProvider
 
         // Register Route: Users Me GET
         $this->registerApiRoute('GET', '/users/me', [\WebsiteSQL\WebsiteSQL\Controllers\Api\Users\Me\GetController::class, 'handle'], 'users.me.get', [
-            'auth' => true
+            'permissions' => 'wsql.api.users.me.read'
         ]);
 
         // Register Route: Users Me PATCH
         $this->registerApiRoute('PATCH', '/users/me', [\WebsiteSQL\WebsiteSQL\Controllers\Api\Users\Me\PatchController::class, 'handle'], 'users.me.patch', [
-            'auth' => true
+            'permissions' => 'wsql.api.users.me.update'
         ]);
 
         // Register Route: Users Me Reset Password POST
         $this->registerApiRoute('POST', '/users/me/reset-password', [\WebsiteSQL\WebsiteSQL\Controllers\Api\Users\Me\ResetPassword\PostController::class, 'handle'], 'users.me.reset-password.post', [
-            'auth' => true
+            'permissions' => 'wsql.api.users.me.reset-password'
         ]);
 
         // Register Route: User GET (PLA)
@@ -609,34 +609,44 @@ class RoutingProvider
          * API: Role Routes
          *----------------------------------------*/
 
-        // Register Route: Roles GET
+        // Register Route: Roles GET (PLA)
         $this->registerApiRoute('GET', '/roles', [\WebsiteSQL\WebsiteSQL\Controllers\Api\Roles\GetController::class, 'handle'], 'roles.get', [
             'permissions' => 'wsql.api.roles.read'
         ]);
 
-        // Register Route: Roles POST
+        // Register Route: Roles POST (PLA)
         $this->registerApiRoute('POST', '/roles', [\WebsiteSQL\WebsiteSQL\Controllers\Api\Roles\PostController::class, 'handle'], 'roles.post', [
             'permissions' => 'wsql.api.roles.create'
         ]);
 
-        // Register Route: Role GET
+        // Register Route: Role GET (PLA)
         $this->registerApiRoute('GET', '/roles/{id:uuid}', [\WebsiteSQL\WebsiteSQL\Controllers\Api\Roles\Single\GetController::class, 'handle'], 'roles.single.get', [
-            'permissions' => 'wsql.api.roles.read'
+            'permissions' => 'wsql.api.roles.single.read'
         ]);
 
-        // Register Route: Role PATCH
+        // Register Route: Role PATCH (PLA)
         $this->registerApiRoute('PATCH', '/roles/{id:uuid}', [\WebsiteSQL\WebsiteSQL\Controllers\Api\Roles\Single\PatchController::class, 'handle'], 'roles.single.patch', [
-            'permissions' => 'wsql.api.roles.update'
+            'permissions' => 'wsql.api.roles.single.update'
         ]);
 
-        // Register Route: Role DELETE
+        // Register Route: Role DELETE (PLA)
         $this->registerApiRoute('DELETE', '/roles/{id:uuid}', [\WebsiteSQL\WebsiteSQL\Controllers\Api\Roles\Single\DeleteController::class, 'handle'], 'roles.single.delete', [
-            'permissions' => 'wsql.api.roles.delete'
+            'permissions' => 'wsql.api.roles.single.delete'
+        ]);
+
+        // Register Route: Role Permissions POST
+        $this->registerApiRoute('POST', '/roles/{id:uuid}/permissions', [\WebsiteSQL\WebsiteSQL\Controllers\Api\Roles\Single\Permissions\PostController::class, 'handle'], 'roles.single.permissions.post', [
+            'permissions' => 'wsql.api.roles.single.permissions.create'
         ]);
 
         // Register Route: Role Permissions GET
         $this->registerApiRoute('GET', '/roles/{id:uuid}/permissions', [\WebsiteSQL\WebsiteSQL\Controllers\Api\Roles\Single\Permissions\GetController::class, 'handle'], 'roles.single.permissions.get', [
-            'permissions' => 'wsql.api.roles.permissions.read'
+            'permissions' => 'wsql.api.roles.single.permissions.read'
+        ]);
+
+        // Register Route: Role Permissions DELETE
+        $this->registerApiRoute('DELETE', '/roles/{id:uuid}/permissions/{permission_id:number}', [\WebsiteSQL\WebsiteSQL\Controllers\Api\Roles\Single\Permissions\Single\DeleteController::class, 'handle'], 'roles.single.permissions.single.delete', [
+            'permissions' => 'wsql.api.roles.single.permissions.single.delete'
         ]);
 
         /*----------------------------------------*
