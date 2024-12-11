@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Baloo2 Font */
+@font-face {
+    font-family: 'Baloo2';
+    src: url('../fonts/Baloo2-Regular.ttf');
+    font-style: normal;
+    font-weight: 400;
+}
+@font-face {
+    font-family: 'Baloo2';
+    src: url('../fonts/Baloo2-Medium.ttf');
+    font-style: normal;
+    font-weight: 500;
+}
+@font-face {
+    font-family: 'Baloo2';
+    src: url('../fonts/Baloo2-SemiBold.ttf');
+    font-style: normal;
+    font-weight: 600;
+}
+@font-face {
+    font-family: 'Baloo2';
+    src: url('../fonts/Baloo2-Bold.ttf');
+    font-style: normal;
+    font-weight: 700;
+}
+@font-face {
+    font-family: 'Baloo2';
+    src: url('../fonts/Baloo2-ExtraBold.ttf');
+    font-style: normal;
+    font-weight: 800;
+}
