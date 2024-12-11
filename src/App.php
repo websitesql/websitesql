@@ -434,11 +434,6 @@ class App
      */
     public function getAuth(): AuthenticationProvider
     {
-        // Check if database connection is set
-        if (!$this->database) {
-            throw new Exception('Database connection not set');
-        }
-
         // Return an instance of the AuthenticationProvider class
         return new AuthenticationProvider($this);
     }
