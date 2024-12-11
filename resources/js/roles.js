@@ -278,7 +278,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
         // Modal text
         const confirmDeleteText = document.createElement('p');
         confirmDeleteText.className = 'text-md text-gray-700 dark:text-white font-baloo font-normal';
-        confirmDeleteText.textContent = 'Are you sure you want to delete the following user?';
+        confirmDeleteText.textContent = 'Are you sure you want to delete the following permission?';
 
         // User card
         const userCardDelete = document.createElement('div');
@@ -321,7 +321,7 @@ document.addEventListener("DOMContentLoaded", function(event) {
                 });
                 if (response.ok) {
                     roleFunctions.closeModel(modelElement);
-                    WsqlToast.show('User deleted successfully', 'success');
+                    WsqlToast.show('Role deleted successfully', 'success');
                 } else {
                     const result = await response.json();
                     throw new Error(result.message);
@@ -467,15 +467,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
         // Create button
         const actionConfirmButton = WsqlElements.button('Create', 'fas fa-shield-halved', () => {
-            roleFunctions.wsqlCreateRole({
+            // Chek the name and description fields
+            if (!nameField.querySelector('input').value || !descriptionField.querySelector('textarea').value) {
+                WsqlToast.show('Please fill in all required fields', 'danger');
+                return;
+            }
+
+            // Create the role
+            roleFunctions.createRole({
                 name: nameField.querySelector('input').value,
                 description: descriptionField.querySelector('textarea').value,
                 app_access: appAccessField.querySelector('button').getAttribute('checked') === 'true' ? 1 : 0,
                 administrator: administratorField.querySelector('button').getAttribute('checked') === 'true' ? 1 : 0,
                 public_access: publicAccessField.querySelector('button').getAttribute('checked') === 'true' ? 1 : 0,
-            }, () => {
-                roleFunctions.wsqlCreateRoleCloseModel(wsqlCreateRoleContainer);
-                callback();
+            }, (status, message) => {
+                if (status) {
+                    roleFunctions.wsqlCreateRoleCloseModel(wsqlCreateRoleContainer);
+                    WsqlToast.show('Role created successfully', 'success');
+                    roleTables.roleTable.reload();
+                } else {
+                    WsqlToast.show(message, 'danger');
+                }
             });
         });
         wsqlCreateRoleActions.appendChild(actionConfirmButton);
@@ -492,23 +504,10 @@ document.addEventListener("DOMContentLoaded", function(event) {
         modelContainer.appendChild(wsqlCreateRoleActions);
 
         // Create the model
-        const modelElement = userFunctions.createModel(modelContainer);
-    }
-
-    // Close modal
-    roleFunctions.wsqlCreateRoleCloseModel = function (container) {
-            // Close modal
-            container.classList.remove('visible', 'opacity-100');
-            container.classList.add('invisible', 'opacity-0');
-
-            // Remove modal from DOM
-            setTimeout(() => {
-                container.remove();
-            }, 100);
+        const modelElement = roleFunctions.createModel(modelContainer);
     }
 
     
-
     /*
      * This function creates a model
      */
