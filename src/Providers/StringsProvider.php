@@ -11,7 +11,7 @@ class StringsProvider
      */
     public function getVersion(): string
     {
-        return "2.1.0-RC6";
+        return "2.1.0-RC7";
     }
 
     /*
