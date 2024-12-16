@@ -4,6 +4,8 @@ vendor/
 composer.lock
 .env
 .env.test
+.vscode/
+logs/
 web.config
 node_modules/
 package-lock.json
