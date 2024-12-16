@@ -27,6 +27,12 @@ gulp.task('scripts', function() {
         .pipe(gulp.dest('public/wsql-contents/assets/js'));
 });
 
+// Task to optimize and move images
+gulp.task('images', function() {
+    return gulp.src('resources/images/**/*', {encoding: false})
+        .pipe(gulp.dest('public/wsql-contents/assets/images'));
+});
+
 // Task to copy fonts
 gulp.task('fonts', function() {
     return gulp.src('resources/fonts/**/*', {encoding: false})
@@ -34,7 +40,7 @@ gulp.task('fonts', function() {
 });
 
 // Default task to run all tasks
-gulp.task('default', gulp.parallel('css', 'scripts', 'fonts'));
+gulp.task('default', gulp.parallel('css', 'scripts', 'images', 'fonts'));
 
 // Watch task to watch for changes in files
 gulp.task('watch', function() {
@@ -43,6 +49,7 @@ gulp.task('watch', function() {
     gulp.watch('resources/views/**/*.html', gulp.series('css'));
     gulp.watch('resources/js/**/*.js', gulp.series('css'));
     gulp.watch('resources/js/**/*.js', gulp.series('scripts'));
+    gulp.watch('resources/images/**/*', gulp.series('images'));
     gulp.watch('resources/fonts/**/*', gulp.series('fonts'));
     gulp.watch('src/**/*.php', gulp.series('css'));
     gulp.watch('src/**/*.html', gulp.series('css'));
