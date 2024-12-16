@@ -163,7 +163,14 @@ class App
                     'TIMEZONE' => $environment['TIMEZONE'],
                     'SERVE_APP' => $environment['SERVE_APP'],
                     'SERVE_LOCATION' => $environment['SERVE_LOCATION'],
-                    'PUBLIC_URL' => $publicUrl
+                    'PUBLIC_URL' => $publicUrl,
+                    'MAIL_DRIVER' => $environment['MAIL_DRIVER'],
+                    'MAIL_FROM' => $environment['MAIL_FROM'],
+                    'MAIL_HOST' => $environment['MAIL_HOST'] ?? null,
+                    'MAIL_PORT' => $environment['MAIL_PORT'] ?? null,
+                    'MAIL_USERNAME' => $environment['MAIL_USERNAME'] ?? null,
+                    'MAIL_PASSWORD' => $environment['MAIL_PASSWORD'] ?? null,
+                    'MAIL_ENCRYPTION' => $environment['MAIL_ENCRYPTION'] ?? null,
                 ],
                 'PRIVATE' => [
                     'DB_DRIVER' => $environment['DB_DRIVER'],
