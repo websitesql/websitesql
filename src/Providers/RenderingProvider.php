@@ -84,6 +84,7 @@ class RenderingProvider
         $this->engine->addFolder('layout', $this->renderingPath . '/layouts');
         $this->engine->addFolder('errors', $this->renderingPath . '/errors');
         $this->engine->addFolder('component', $this->renderingPath . '/components');
+        $this->engine->addFolder('email', $this->renderingPath . '/emails');
     }
 
     /*

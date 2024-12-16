@@ -71,6 +71,11 @@ class PermissionsProvider
         ]);
 
         /*----------------------------------------*
+         * App: Settings Routes
+         *----------------------------------------*/
+        $this->registerPermission('app', 'wsql.settings.read', 'Read the settings');
+
+        /*----------------------------------------*
          * App: Settings User Routes
          *----------------------------------------*/
         $this->registerPermission('app', 'wsql.settings.users.create', '', [

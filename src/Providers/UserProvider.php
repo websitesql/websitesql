@@ -50,6 +50,7 @@ class UserProvider
 
         // Insert the user into the database
         $this->app->getDatabase()->insert($this->app->getStrings()->getTableUsers(), [
+            'uuid' => $this->app->getUtilities()->generateUuid(4),
             'firstname' => $firstname,
             'lastname' => $lastname,
             'email' => $email,
@@ -59,6 +60,12 @@ class UserProvider
             'email_verified' => $email_verified,
             'created_at' => $this->app->getUtilities()->getDateTime(),
         ]);
+
+        // Get the user ID
+        $id = $this->app->getDatabase()->id();
+
+        // Send the confirmation email
+        $this->sendConfirmationEmail((int) $id);
 
         return true;
     }
@@ -82,5 +89,41 @@ class UserProvider
     public function getUsers(): array
     {
         return $this->app->getDatabase()->select($this->app->getStrings()->getTableUsers(), '*');
-    }   
+    }
+
+    /*
+     * This method sends a user confirmation email
+     * 
+     * @param int $id
+     * @return bool
+     */
+    public function sendConfirmationEmail(int $id): bool
+    {
+        $user = $this->getUserById($id);
+
+        if (!$user) {
+            return false;
+        }
+
+        // Generate a token for the email confirmation link
+        $token = $this->app->getUtilities()->randomString(32);
+        $expiry = new \DateTime('+1 day');
+
+        // Update the user with the token and expiry
+        $this->app->getDatabase()->update($this->app->getStrings()->getTableUsers(), [
+            'email_verify_code' => $token,
+            'email_verify_expiry' => $expiry->format('Y-m-d H:i:s')
+        ], ['id' => $id]);
+
+        // Generate the email content
+        $content = $this->app->getRenderer()->render('email::email-confirmation', [
+            'firstname' => $user['firstname'],
+            'url' => $this->app->getEnv('PUBLIC_URL') . '/verify-email/' . $token
+        ]);
+
+        // Send the email
+        $this->app->getMail()->send($user['email'], 'Confirm your email address', $content);
+
+        return true;
+    }
 }
